@@ -4,7 +4,7 @@ public class Robot {
 
     Position pos;
     int directionGrad;
-    int countS = 0;
+
     ArrayList<Position> history=new ArrayList<>();
 
     public Robot(int x, int y, int directionGrad) {
@@ -27,7 +27,7 @@ public class Robot {
         if (directionGrad == 90)  pos = new Position(pos.x, pos.y+1);
         if (directionGrad == 180) pos = new Position(pos.x-1, pos.y);
         if (directionGrad == 270) pos = new Position(pos.x, pos.y-1);
-        countS++;
+
     }
 
     public void doCommand(char symbol) {
@@ -47,7 +47,7 @@ public class Robot {
         for (char symbol : proga.toCharArray()) {
             doCommand(symbol);
             if (symbol=='S' && checkIfIWasHere() )
-                return this.countS;
+                return this.history.size();
         }
         return -1;
     }

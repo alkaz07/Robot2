@@ -7,7 +7,7 @@ public class RobotWithSet {
 
     Position pos;
     int directionGrad;
-    int countS = 0;
+
     //Хэшсет всегда работает, но будет работать неправильно, если не переопределен метод equals
     Set<Position> history=new HashSet<>();
     //Трисет выбрасывает исключение, если нет метода compareTo
@@ -33,7 +33,7 @@ public class RobotWithSet {
         if (directionGrad == 90)  pos = new Position(pos.x, pos.y+1);
         if (directionGrad == 180) pos = new Position(pos.x-1, pos.y);
         if (directionGrad == 270) pos = new Position(pos.x, pos.y-1);
-        countS++;
+
     }
 
     public void doCommand(char symbol) {
@@ -53,7 +53,7 @@ public class RobotWithSet {
         for (char symbol : proga.toCharArray()) {
             doCommand(symbol);
             if (symbol=='S' && checkIfIWasHere() )
-                return this.countS;
+                return this.history.size();
         }
         return -1;
     }
